@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+  </head>
+  <body id="tabs-app">
+    <tabs>
+      <pane title="Localization">
+        Date: {{ '2012-04-01' | date:'fullDate' }} <br>
+        Currency: {{ 123456 | currency }} <br>
+        Number: {{ 98765.4321 | number }} <br>
+      </pane>
+      <pane title="Pluralization">
+        <div>
+          <div ng-repeat="beerCount in TabsCtrl.beerCounts">
+            {{beerCount}}
+          </div>
+        </div>
+      </pane>
+    </tabs>
+    <script type="application/dart" src="tabs.dart"></script>
+    <script type="text/javascript" src="packages/browser/dart.js"></script>
+  </body>
+</html>
