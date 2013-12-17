@@ -3,17 +3,17 @@
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
   </head>
-  <body id="tabs-app">
+  <body id="tabs-app" beer-counter>
     <tabs>
       <pane title="Localization">
-        Date: {{ '2012-04-01' | date:'fullDate' }} <br>
-        Currency: {{ 123456 | currency }} <br>
-        Number: {{ 98765.4321 | number }} <br>
+        Date: {{'2012-04-01' | date:'fullDate'}} <br>
+        Currency: {{123456 | currency}} <br>
+        Number: {{98765.4321 | number}} <br>
       </pane>
       <pane title="Pluralization">
-        <div>
-          <div ng-repeat="beerCount in TabsCtrl.beerCounts">
-            {{beerCount}}
+        <div beer-counter>
+          <div ng-repeat="beerCount in beerCounter.beerCounts">
+            {{beerCounter.getMessage(beerCount)}}
           </div>
         </div>
       </pane>

@@ -6,17 +6,12 @@ import 'package:intl/intl.dart';
 @NgComponent(
     selector: 'tabs',
     templateUrl: 'tabs.html',
-    applyAuthorStyles: true,
-    publishAs: 'tabs'
+    cssUrl: 'tabs.css',
+    publishAs: 'tabs',
+    visibility: NgDirective.DIRECT_CHILDREN_VISIBILITY
 )
 class TabsComponent {
-  static TabsController instance;
-
   List<PaneComponent> panes = [];
-
-  TabsComponent() {
-    instance = this;
-  }
 
   void select(var pane) {
     for (var i = 0; i < panes.length; i++) {
@@ -36,50 +31,52 @@ class TabsComponent {
 @NgComponent(
     selector: 'pane',
     templateUrl: 'pane.html',
-    map: const {'title' : '@'},
+    cssUrl: 'pane.css',
     applyAuthorStyles: true,
-    publishAs: 'pane'
+    publishAs: 'pane',
+    map: const {'title' : '@'}
 )
-class PaneComponent implements NgAttachAware {
+class PaneComponent {
   String title = '';
   bool selected = false;
 
-  void attach() {
-    TabsComponent.instance.addPane(this);
+  PaneComponent(TabsComponent tabs) {
+    tabs.addPane(this);
   }
 }
 
 @NgController(
-    selector: '[id=tabs-app]',
-    publishAs: 'TabsCtrl')
-class TabsController {
+    selector: '[beer-counter]',
+    publishAs: 'beerCounter')
+class BeerCounter {
   List<int> beerCounts = [0, 1, 2, 3, 4, 5, 6];
-  String messageFormat;
+  Function getMessage;
 
-  TabsController() {
+  BeerCounter() {
     if (Intl.defaultLocale.toString() == 'sk_SK') {
-    } else {  // en_US
-//      messageFormat = '''${Intl.plural(beer_count, {
-//                           '0': 'no beers',
-//                           '1': 'one beer',
-//                           'other': '$beer_count beers'
-//                         })}''';
+      this.getMessage = (beer_count) => Intl.plural(
+          beer_count,
+          zero: '\u017Eiadne pivo',
+          one: '$beer_count pivo',
+          few: '$beer_count piv\u00E1',
+          other: '$beer_count p\u00EDv');
+    } else {
+      this.getMessage = (beer_count) => Intl.plural(
+          beer_count,
+          zero: 'no beers',
+          one: '$beer_count beer',
+          few: '$beer_count beers',
+          other: '$beer_count beers');
     }
   }
 
-  String beerMessage(int count) => Intl.message(
-       this.messageFormat,
-       name: 'beer_count_message',
-       args: [beer_count],
-       desc: 'Description of how many beers there are.',
-       examples: {'beer_count': 3});
 }
 
 class TabsModule extends Module {
   TabsModule() {
     type(TabsComponent);
     type(PaneComponent);
-    type(TabsController);
+    type(BeerCounter);
   }
 }
 
