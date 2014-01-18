@@ -2,7 +2,7 @@
   <ul class="nav nav-tabs">
     <li ng-repeat="pane in tabs.panes"
         ng-class="{active: pane.selected}">
-      <a href="" ng-click="tabs.select(pane)">
+      <a href="" ng-click="tabs.selectPane(pane)">
         {{pane.title}}
       </a>
     </li>

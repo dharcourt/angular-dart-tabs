@@ -1,0 +1,6 @@
+{
+  "_locale": "en",
+  "beer_count_message": "${Intl.plural(count, zero: 'no beers', one: '$count beer', few: '$count beers', other: '$count beers')}",
+  "currency_format": "\\$#,##0.00",
+  "number_format": "#,##0.###"
+}

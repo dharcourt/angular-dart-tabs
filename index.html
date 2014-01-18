@@ -3,18 +3,16 @@
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
   </head>
-  <body id="tabs-app" beer-counter>
+  <body id="tabs-app" tabs-controller>
     <tabs>
       <pane title="Localization">
-        Date: {{'2012-04-01' | date:'fullDate'}} <br>
-        Currency: {{123456 | currency}} <br>
-        Number: {{98765.4321 | number}} <br>
+        Date: {{controller.formattedDate('2012-04-01')}} <br>
+        Currency: {{controller.formattedCurrency(123456)}} <br>
+        Number: {{controller.formattedNumber(98765.4321)}} <br>
       </pane>
       <pane title="Pluralization">
-        <div beer-counter>
-          <div ng-repeat="beerCount in beerCounter.beerCounts">
-            {{beerCounter.getMessage(beerCount)}}
-          </div>
+        <div ng-repeat="beerCount in controller.beerCounts">
+          {{controller.beerCountMessage(beerCount)}}
         </div>
       </pane>
     </tabs>
