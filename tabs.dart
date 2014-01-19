@@ -33,7 +33,7 @@ class TabsComponent {
     cssUrl: 'pane.css',
     applyAuthorStyles: true,
     publishAs: 'pane',
-    map: const {'title' : '@'}
+    map: const {'title': '@'}
 )
 class PaneComponent {
   String title = '';
@@ -45,18 +45,23 @@ class PaneComponent {
 }
 
 @NgController(
-    selector: '[tabs-controller]',
-    publishAs: 'controller')
+    selector: '.tabs-app',
+    publishAs: 'controller',
+    map: const {'foo': '@'}
+)
 class TabsController {
   List<int> beerCounts = [0, 1, 2, 3, 4, 5, 6];
+  String foo;
   DateFormat dateFormat;
   NumberFormat numberFormat;
   NumberFormat currencyFormat;
   List<String> beerMessages;
 
-  TabsController(): this.withLocale('sk');
+  TabsController() {
+    this.setLocale(Intl.defaultLocale);
+  }
 
-  TabsController.withLocale(String locale) {
+  setLocale(String locale) {
     locale = Intl.canonicalizedLocale(locale);
     this.dateFormat = new DateFormat('yMMMMEEEEd', locale);
     this.numberFormat = new NumberFormat('#,##0.###', locale);
@@ -92,6 +97,6 @@ class TabsModule extends Module {
 main() {
   Future.wait([initializeDateFormatting('en', null),
                initializeDateFormatting('sk', null)]).then((_) {
-    ngBootstrap(module: new TabsModule(), selector: '#tabs-app');
+    ngBootstrap(module: new TabsModule(), selector: '.tabs-app');
   });
 }

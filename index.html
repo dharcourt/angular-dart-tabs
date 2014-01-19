@@ -3,20 +3,23 @@
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
   </head>
-  <body id="tabs-app" tabs-controller>
-    <tabs>
-      <pane title="Localization">
-        Date: {{controller.formattedDate('2012-04-01')}} <br>
-        Currency: {{controller.formattedCurrency(123456)}} <br>
-        Number: {{controller.formattedNumber(98765.4321)}} <br>
-      </pane>
-      <pane title="Pluralization">
-        <div ng-repeat="beerCount in controller.beerCounts">
-          {{controller.beerCountMessage(beerCount)}}
-        </div>
-      </pane>
-    </tabs>
-    <script type="application/dart" src="tabs.dart"></script>
-    <script type="text/javascript" src="packages/browser/dart.js"></script>
+  <body
+    <div class="tabs-app" ng-repeat="locale in ['en', 'sk']">
+      {{controller.setLocale(locale)}}
+      <tabs>
+        <pane title="Localization">
+          Date: {{controller.formattedDate('2012-04-01')}} <br>
+          Currency: {{controller.formattedCurrency(123456)}} <br>
+          Number: {{controller.formattedNumber(98765.4321)}} <br>
+        </pane>
+        <pane title="Pluralization">
+          <div ng-repeat="beerCount in controller.beerCounts">
+            {{controller.beerCountMessage(beerCount)}}
+          </div>
+        </pane>
+      </tabs>
+      <script type="application/dart" src="tabs.dart"></script>
+      <script type="text/javascript" src="packages/browser/dart.js"></script>
+    </div>
   </body>
 </html>
