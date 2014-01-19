@@ -1,6 +1,3 @@
-file:///Users/Workspace/AngularDart/TabsDart/messages_all.dart
-file:///Users/Workspace/AngularDart/TabsDart/messages_en.dart
-file:///Users/Workspace/AngularDart/TabsDart/messages_sk.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/angular/angular.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/angular/bootstrap.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/angular/core/cache.dart
@@ -93,7 +90,6 @@ file:///Users/Workspace/AngularDart/TabsDart/packages/intl/date_symbol_data_loca
 file:///Users/Workspace/AngularDart/TabsDart/packages/intl/date_symbols.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/intl/date_time_patterns.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/intl/intl.dart
-file:///Users/Workspace/AngularDart/TabsDart/packages/intl/message_lookup_by_library.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/intl/number_format.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/intl/number_symbols.dart
 file:///Users/Workspace/AngularDart/TabsDart/packages/intl/number_symbols_data.dart
